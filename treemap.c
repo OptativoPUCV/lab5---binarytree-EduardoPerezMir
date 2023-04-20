@@ -89,10 +89,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         return;
     tree->current = tree->root;
     while (!is_equal(tree, node->pair->key, tree->current->pair->key) && tree->current != NULL)
+    {
         if (tree->lower_than(node->pair->key, tree->current->pair->key))
             tree->current = tree->current->left;
         else
             tree->current = tree->current->right;
+    }
     if (tree->current != NULL)
     {
         TreeNode* auxNode = createTreeNode(tree->current->pair->key, tree->current->pair->value);
