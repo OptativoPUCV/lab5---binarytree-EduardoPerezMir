@@ -152,3 +152,17 @@ treemap.c:96:14: error: format ‘%d’ expects argument of type ‘int’, but 
 cc1: all warnings being treated as errors
 Compilation failed
 220edca
+Thu 20 Apr 2023 09:49:49 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:96:14: error: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘void *’ [-Werror=format=]
+   96 |     printf("%s", tree->current->pair->key);
+      |             ~^   ~~~~~~~~~~~~~~~~~~~~~~~~
+      |              |                      |
+      |              char *                 void *
+      |             %p
+cc1: all warnings being treated as errors
+Compilation failed
+e9461b1
