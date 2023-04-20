@@ -97,8 +97,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     }
     if (tree->current != NULL)
     {
-        TreeNode* auxNode = createTreeNode(tree->current->pair->key, tree->current->pair->value);
-        auxNode = tree->current->parent;
         if (tree->current->left == NULL && tree->current->right == NULL)
         {
             if (tree->lower_than(node->pair->key, tree->current->parent->pair->key))
