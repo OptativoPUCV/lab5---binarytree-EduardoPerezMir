@@ -85,28 +85,17 @@ TreeNode * minimum(TreeNode * x){
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-       // base case
     TreeNode *root = tree->root;
     if (root == NULL)
         return root;
- 
-    // If the key to be deleted
-    // is smaller than the root's
-    // key, then it lies in left subtree
+    
     if (key < root->key)
-        root->left = removeNode(root->left, key);
+        root->left = removeNode(tree, root->left);
  
-    // If the key to be deleted
-    // is greater than the root's
-    // key, then it lies in right subtree
     else if (key > root->key)
-        root->right = removeNode(root->right, key);
- 
-    // if key is same as root's key,
-    // then This is the node
-    // to be deleted
+        root->right = removeNode(tree, root->right);
+
     else {
-        // node with only one child or no child
         if (root->left == NULL) {
             struct node* temp = root->right;
             free(root);
@@ -118,17 +107,11 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             return temp;
         }
  
-        // node with two children:
-        // Get the inorder successor
-        // (smallest in the right subtree)
-        struct node* temp = minValueNode(root->right);
+        TreeNode* temp = minValueNode(root->right);
+
+        root->pair->key = temp->pair->key;
  
-        // Copy the inorder
-        // successor's content to this node
-        root->key = temp->key;
- 
-        // Delete the inorder successor
-        root->right = deleteNode(root->right, temp->key);
+        root->right = removeNode(tree, root);
     }
     return root;
 }
