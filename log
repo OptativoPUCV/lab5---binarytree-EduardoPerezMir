@@ -166,3 +166,9 @@ treemap.c:96:14: error: format ‘%s’ expects argument of type ‘char *’, b
 cc1: all warnings being treated as errors
 Compilation failed
 e9461b1
+Thu 20 Apr 2023 09:50:04 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  8|5
+total_score: 15/70
+7c33ed4
