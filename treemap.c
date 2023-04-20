@@ -85,48 +85,52 @@ TreeNode * minimum(TreeNode * x){
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-    if (tree->root == NULL)
-        return;
-    tree->current = tree->root;
-    while (!is_equal(tree, node->pair->key, tree->current->pair->key) && tree->current != NULL)
-    {
-        if (tree->lower_than(node->pair->key, tree->current->pair->key))
-            tree->current = tree->current->left;
-        else
-            tree->current = tree->current->right;
+       // base case
+    TreeNode *root = tree->root;
+    if (root == NULL)
+        return root;
+ 
+    // If the key to be deleted
+    // is smaller than the root's
+    // key, then it lies in left subtree
+    if (key < root->key)
+        root->left = deleteNode(root->left, key);
+ 
+    // If the key to be deleted
+    // is greater than the root's
+    // key, then it lies in right subtree
+    else if (key > root->key)
+        root->right = deleteNode(root->right, key);
+ 
+    // if key is same as root's key,
+    // then This is the node
+    // to be deleted
+    else {
+        // node with only one child or no child
+        if (root->left == NULL) {
+            struct node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL) {
+            struct node* temp = root->left;
+            free(root);
+            return temp;
+        }
+ 
+        // node with two children:
+        // Get the inorder successor
+        // (smallest in the right subtree)
+        struct node* temp = minValueNode(root->right);
+ 
+        // Copy the inorder
+        // successor's content to this node
+        root->key = temp->key;
+ 
+        // Delete the inorder successor
+        root->right = deleteNode(root->right, temp->key);
     }
-    if (tree->current != NULL)
-    {
-        if (tree->current->left == NULL && tree->current->right == NULL)
-        {
-            if (tree->lower_than(node->pair->key, tree->current->parent->pair->key))
-                tree->current->parent->left = NULL;
-            else
-                tree->current->parent->right = NULL;
-            tree->current = NULL;
-            return;
-        }
-        if (tree->current->left != NULL && tree->current->right != NULL)
-        {
-            TreeNode*minNode = minimum(tree->current->right);
-            tree->current->pair->value = minNode->pair->value;
-            tree->current->pair->key = minNode->pair->key;
-            minNode = NULL;
-            tree->current = NULL;
-            return;
-        }
-        else
-        {
-            TreeNode* child = (tree->current->left != NULL) ? tree->current->left : tree->current->right;
-            if (tree->current == tree->root)
-                tree->root = child;
-            else if (tree->current == tree->current->parent->left)
-                tree->current->parent->left = child;
-            else
-                tree->current->parent->right = child;
-            child->parent = tree->current->parent;
-        }
-    }
+    return root;
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
