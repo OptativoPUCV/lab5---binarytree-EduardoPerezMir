@@ -94,13 +94,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     // is smaller than the root's
     // key, then it lies in left subtree
     if (key < root->key)
-        root->left = deleteNode(root->left, key);
+        root->left = removeNode(root->left, key);
  
     // If the key to be deleted
     // is greater than the root's
     // key, then it lies in right subtree
     else if (key > root->key)
-        root->right = deleteNode(root->right, key);
+        root->right = removeNode(root->right, key);
  
     // if key is same as root's key,
     // then This is the node
