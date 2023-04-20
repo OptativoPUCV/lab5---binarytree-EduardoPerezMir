@@ -101,11 +101,10 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         auxNode = tree->current->parent;
         if (tree->current->left == NULL && tree->current->right == NULL)
         {
-            if (auxNode->left == tree->current)
-                auxNode->left = NULL;
+            if (tree->lower_than(node->pair->key, tree->current->parent->pair->key))
+                tree->current->parent->left = NULL;
             else
-                auxNode->right = NULL;
-            tree->current = NULL;
+                tree->current->parent->right = NULL;
             return;
         }
         if (tree->current->left != NULL && tree->current->right != NULL)
