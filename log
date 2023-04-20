@@ -14,3 +14,19 @@ Thu 20 Apr 2023 08:41:36 PM UTC:
  tests:  4|7
 total_score: 5/70
 ee93fb8
+Thu 20 Apr 2023 08:49:52 PM UTC: 
+ treemap.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:56:29: error: implicit declaration of function ‘createNode’; did you mean ‘createTreeNode’? [-Werror=implicit-function-declaration]
+   56 |         TreeNode* auxNode = createNode(tree->root->pair->key, tree->root->pair->value);
+      |                             ^~~~~~~~~~
+      |                             createTreeNode
+treemap.c:56:29: error: initialization of ‘TreeNode *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+treemap.c:56:19: error: unused variable ‘auxNode’ [-Werror=unused-variable]
+   56 |         TreeNode* auxNode = createNode(tree->root->pair->key, tree->root->pair->value);
+      |                   ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+d8e1acc
