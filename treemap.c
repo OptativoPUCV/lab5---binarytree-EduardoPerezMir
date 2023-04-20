@@ -93,7 +93,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             tree->current = tree->current->left;
         else
             tree->current = tree->current->right;
-    printf("%d", tree->current->key);
+    printf("%d", tree->current->pair->key);
     if (tree->current != NULL)
     {
         TreeNode* auxNode = createTreeNode(tree->current->pair->key, tree->current->pair->value);
