@@ -118,10 +118,8 @@ if (tree->root == NULL || tree == NULL)
     else
     {
         tree->current = tree->root;
-        TreeNode* auxNode = createTreeNode(tree->current->pair->key, tree->current->pair->value);
         while (tree->current != NULL)
         {
-            auxNode = tree->current;
             if (tree->lower_than(key, tree->current->pair->key))
                 tree->current = tree->current->left;
             else
