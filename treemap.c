@@ -183,8 +183,11 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    tree->current->pair = firstTreeMap(tree);
-    
+    tree->current = tree->root;
+    while (tree->current->left != NULL)
+    {
+        tree->current = tree->current->left;
+    }
     void* key = tree->current->pair->key;
     if (tree->current->right != NULL)
     {
