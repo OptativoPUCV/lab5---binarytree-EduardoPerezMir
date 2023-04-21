@@ -553,3 +553,23 @@ Fri 21 Apr 2023 06:28:17 PM UTC:
  tests:  20|2
 total_score: 45/70
 fbfd0c1
+Fri 21 Apr 2023 06:35:05 PM UTC: 
+ treemap.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:186:19: error: assignment to ‘TreeNode *’ from incompatible pointer type ‘TreeMap *’ [-Werror=incompatible-pointer-types]
+  186 |     tree->current = tree;
+      |                   ^
+treemap.c:187:28: error: ‘TreeNode’ has no member named ‘key’
+  187 |     int key = tree->current->key;
+      |                            ^~
+treemap.c:196:78: error: comparison between pointer and integer [-Werror]
+  196 |     while (tree->current->parent != NULL && tree->current->parent->pair->key < key)
+      |                                                                              ^
+treemap.c:200:34: error: comparison between pointer and integer [-Werror]
+  200 |     if (tree->current->pair->key < key)
+      |                                  ^
+cc1: all warnings being treated as errors
+Compilation failed
+be59fc0
