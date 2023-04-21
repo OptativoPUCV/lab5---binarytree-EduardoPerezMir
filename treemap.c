@@ -183,8 +183,9 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    tree->current = tree;
-    int key = tree->current->key;
+    tree->current->pair = firstTreeMap(tree);
+    
+    void* key = tree->current->pair->key;
     if (tree->current->right != NULL)
     {
         tree->current = tree->current->right;
