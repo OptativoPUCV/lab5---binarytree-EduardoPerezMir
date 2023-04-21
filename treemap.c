@@ -109,7 +109,7 @@ void eraseTreeMap(TreeMap * tree, void* key){
 }
 
 
-
+/* NOTA: HACER SEARCH ANTES QUE REMOVE */
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
     return NULL;
