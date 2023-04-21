@@ -112,9 +112,8 @@ void eraseTreeMap(TreeMap * tree, void* key){
 /* NOTA: HACER SEARCH ANTES QUE REMOVE */
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
-    
-if (tree->root == NULL || tree == NULL)
-        return NULL;
+    if (tree->root == NULL || tree == NULL)
+         return NULL;
     else
     {
         tree->current = tree->root;
@@ -131,6 +130,7 @@ if (tree->root == NULL || tree == NULL)
                 tree->current = tree->current->right;
             }
         }
+    }
     return NULL;
 }
 
