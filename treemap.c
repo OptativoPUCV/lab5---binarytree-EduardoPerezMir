@@ -195,6 +195,7 @@ Pair * nextTreeMap(TreeMap * tree) {
     {
         tree->current = tree->current->parent;
     }
+    tree->current = tree->current->parent;
     if (tree->current->pair->key < key)
         return NULL;
     else
