@@ -130,6 +130,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         TreeNode* minimo = minimum(node->right);
         node->pair->key = minimo->pair->key;
         node->pair->value = minimo->pair->value;
+        removeNode(tree, minimo);
     }
 }
 
@@ -183,11 +184,8 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    tree->current = tree->root;
-    while (tree->current->left != NULL)
-    {
-        tree->current = tree->current->left;
-    }
+    tree->current->pair = firstTreeMap(tree);
+    
     void* key = tree->current->pair->key;
     if (tree->current->right != NULL)
     {
