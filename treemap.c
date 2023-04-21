@@ -189,6 +189,7 @@ Pair * nextTreeMap(TreeMap * tree) {
     if (tree->current->right != NULL)
     {
         tree->current = minimum(tree->current->right);
+        return tree->current->pair;
     }
     while (tree->current->parent != NULL && tree->current->parent->pair->key < key)
     {
