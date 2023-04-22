@@ -156,9 +156,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
             else
             {
                 if (is_equal(tree, tree->current->pair->key, key))
-                {
                     return tree->current->pair;
-                }
                 tree->current = tree->current->right;
             }
         }
