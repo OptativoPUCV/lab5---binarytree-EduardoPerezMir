@@ -208,7 +208,7 @@ Pair * nextTreeMap(TreeMap * tree) {
         tree->current = minimum(tree->current->right);
         return tree->current->pair;
     }
-    TreeNode*auxNode = tree->current->parent;
+    //TreeNode*auxNode = tree->current->parent;
     while (tree->current->parent!= NULL && tree->current->parent->right == tree->current)
     {
         tree->current = tree->current->parent;
