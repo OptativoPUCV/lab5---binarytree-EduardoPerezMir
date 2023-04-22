@@ -209,14 +209,13 @@ Pair * nextTreeMap(TreeMap * tree) {
         return tree->current->pair;
     }
     TreeNode*auxNode = tree->current->parent;
-    while (auxNode != NULL && tree->current->parent->right == tree->current)
+    while (tree->current->parent!= NULL && tree->current->parent->right == tree->current)
     {
-        tree->current = auxNode;
-        auxNode = auxNode->parent;
+        tree->current = tree->current->parent;
     }
-    tree->current = auxNode;
+    tree->current = tree->current->parent;
     
-    if (auxNode != NULL)
-        return auxNode->pair;
+    if (tree->current != NULL)
+        return tree->current->pair;
     return NULL;
 }
